@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your IELTS Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f9f9f9;
+            height: 100vh;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .circles {
+            display: grid;
+            grid-template-columns: repeat(2, 20px);
+            grid-gap: 1px;
+            margin-bottom: 10px;
+            margin-right: 7px;
+            height: 32px;
+
+        }
+        .circle {
+            width: 19px;
+            height: 19px;
+            background-color: #4B306A;
+            border-radius: 50%;
+        }
+        .text {
+            color: #4B306A;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 1;
+            height: 32px;
+            display:flex;
+            align-items: center;
+            margin-right: 18px;
+        }
+
+        header {
+            background-color: #f2f2f2;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .container {
+            padding: 20px;
+        }
+        .test-card {
+            border: 3px solid #4b306a;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .test-card h3 {
+            font-size: 18px;
+            color: #333;
+        }
+        .test-card p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #555;
+        }
+        .test-card button {
+            background-color: #d00000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .test-card button:hover {
+            background-color: #a30000;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        span{
+            color: #af0000;
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 1;
+            height: 32px;
+            display:flex;
+            align-items: center;
+        }
+        button, p{
+            font-weight: bold;
+        }
+        .button {
+            background-color: #af0000; /* Red background */
+            border: none; /* Remove border */
+            padding: 10px 20px; /* Add padding for better size */
+            border-radius: 5px; /* Optional: Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: inline-block; /* Ensure proper inline behavior */
+        }
+
+        .button a {
+            color: #ffffff; /* White text */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make text bold */
+            font-size: 16px; /* Adjust font size */
+        }
+
+        .button:hover {
+            background-color: #960000; /* Darker red on hover */
+        }
+
+        .button a:hover {
+            text-decoration: underline; /* Optional: underline link on hover */
+        }
+        .flag {
+            width: 300px;
+            height: 150px;
+            background: url('https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg') no-repeat center center/cover;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .info-section, .contact-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: #4B306A;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #6A4B8A;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .menu a {
+            text-decoration: none;
+            color: #4B306A;
+            font-weight: 600;
+            padding: 10px;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #6A4B8A;
+        }
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #4B306A;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .test-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 260px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .test-card:hover {
+            transform: scale(1.05);
+        }
+        .test-card h3 {
+            font-size: 18px;
+            color: #333;
+        }
+        .test-card p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d00000;
+        }
+        .test-card button {
+            background: #d00000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .test-card button:hover {
+            background: #a30000;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <div class="circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="text">
+            <p>BRITISH <br> COUNCIL</p>
+        </div>
+        <span><strong>IELTS KAZAKHSTAN</strong></span>
+    </div>
+    <nav>
+        <button><a href="/register">Register</a></button>
+        <button><a href="/ielts">Book a Test</a></button>
+    </nav>
+    <nav>
+        <button class="button"><a href="#">English</a></button>
+        <button class="button"><a href="#">Blog</a></button>
+        <button class="button"><a href="#">Contact us</a></button>
+        <button class="button"><a href="#">Search</a></button>
+    </nav>
+</header>
+<div class="menu">
+    <a href="#">Learn English</a>
+    <a href="#">Take an Exam</a>
+    <a href="#">Study in the UK</a>
+    <a href="#">What's On</a>
+    <a href="#">About Us</a>
+</div>
+<div class="container">
+    <h1>Book Your IELTS Test</h1>
+    <div class="card-container">
+        <div class="test-card">
+            <h3>IELTS Academic and General Training – Paper Test</h3>
+            <p>89,000 ₸</p>
+            <a href="/registration">
+                <button>Book Now</button>
+            </a>
+        </div>
+        <div class="test-card">
+            <h3>IELTS Academic and General Training – Computer Test</h3>
+            <p>89,000 ₸</p>
+            <a href="/registration">
+                <button>Book Now</button>
+            </a>
+        </div>
+        <div class="test-card">
+            <h3>IELTS Academic and General UKVI – Computer Test</h3>
+            <p>100,000 ₸</p>
+            <a href="/registration">
+                <button>Book Now</button>
+            </a>
+        </div>
+        <div class="test-card">
+            <h3>IELTS Life Skills (A1 and B1) – Computer Test</h3>
+            <p>81,500 ₸</p>
+            <a href="/registration">
+                <button>Book Now</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="flag"></div>
+
+<div class="info-section">
+    <h2>Why Choose IELTS?</h2>
+    <p>Recognized worldwide | Fast results | Flexible dates</p>
+</div>
+
+<div class="contact-form">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="4" required></textarea>
+    <button>Send</button>
+</div>
+</body>
+</html>
