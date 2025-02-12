@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>IELTS Registration - British Council Kazakhstan</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4B306A, #ec8787);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+    .container:hover {
+      transform: scale(1.02);
+    }
+    h2 {
+      color: #4B306A;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      color: #4B306A;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    input:focus, select:focus {
+      border-color: #4B306A;
+      outline: none;
+      box-shadow: 0 0 8px rgba(110, 69, 226, 0.3);
+    }
+    button {
+      margin-top: 25px;
+      padding: 14px;
+      width: 100%;
+      background: linear-gradient(90deg, #4B306A, #ec8787);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #4B306A, #ec8787);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>IELTS Registration Form</h2>
+  <form id="registerForm" action="/users/register" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="passport">Passport Number:</label>
+    <input type="text" id="passport" name="passport" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="test_type">Test Type:</label>
+    <select id="test_type" name="testType" required>
+      <option value="Academic">Academic</option>
+      <option value="General Training">General Training</option>
+      <option value="UKVI">UKVI</option>
+      <option value="UKVI Life Skills A1">UKVI Life Skills A1</option>
+    </select>
+
+    <label for="test_date">Preferred Test Date:</label>
+    <input type="date" id="test_date" name="testDate" required>
+
+    <label for="city">Test City:</label>
+    <select id="city" name="city" required>
+      <option value="Almaty">Almaty</option>
+      <option value="Astana">Astana</option>
+      <option value="Shymkent">Shymkent</option>
+      <option value="Aktobe">Aktobe</option>
+      <option value="Aktau">Aktau</option>
+      <option value="Atyrau">Atyrau</option>
+      <option value="Pavlodar">Pavlodar</option>
+      <option value="Semey">Semey</option>
+      <option value="Oral">Oral</option>
+      <option value="Turkistan">Turkistan</option>
+      <option value="Oskemen">Oskemen</option>
+    </select>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(this);
+      const jsonObject = {};
+      formData.forEach((value, key) => {
+        jsonObject[key] = value
+      });
+
+      try {
+        const response = await fetch("http://localhost:8080/users/register", {  // <-- ADD full URL
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(jsonObject)
+        });
+
+        if (response.ok) {
+          alert("User registered successfully!");
+          window.location.href = "/success"; // Redirect after success
+        } else {
+          const errorText = await response.text(); // Read error response
+          alert("Failed to register user: " + errorText);
+        }
+      } catch (error) {
+        alert("Error: " + error);
+      }
+    });
+    </script>
+    </div>
+</body>
+</html>
